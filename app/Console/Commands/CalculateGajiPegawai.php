@@ -15,7 +15,7 @@ class CalculateGajiPegawai extends Command
      *
      * @var string
      */
-    protected $signature = 'kledo:bikin-data-contoh';
+    protected $signature = 'kledo:bikin-data-contoh-gaji-pegawai';
 
     /**
      * The console command description.

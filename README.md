@@ -1,8 +1,9 @@
 ### Perintah CLI yang Penting
 
-Anda bisa membuat data contoh untuk pengujian dengan menggunakan perintah command di bawah:
+Anda bisa membuat data contoh untuk pengujian dengan menggunakan perintah command di bawah: catatan data pegawai di isi terlebih dahulu
+
 ```
-php artisan kledo:bikin-data-contoh
+php artisan kledo:bikin-data-contoh-gaji-pegawai
 ```
 
 ## Penggunaan Endpoint
