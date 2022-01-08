@@ -1,3 +1,10 @@
+### Perintah CLI yang Penting
+
+Anda bisa membuat data contoh untuk pengujian dengan menggunakan perintah command di bawah:
+```
+php artisan kledo:bikin-data-contoh
+```
+
 ## Penggunaan Endpoint
 
 
