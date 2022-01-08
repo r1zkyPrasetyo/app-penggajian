@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "c1d67c3b-10b5-4858-af4e-0c1e58ac315a",
+		"name": "CollectionTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{test_api}}/api/pegawai",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{test_api}}/api/pegawai",
+					"host": [
+						"{{test_api}}"
+					],
+					"path": [
+						"api",
+						"pegawai"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{test_api}}/api/pegawai",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama_pegawai",
+							"value": "Rizky",
+							"type": "default"
+						},
+						{
+							"key": "total_gaji",
+							"value": "8000000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{test_api}}/api/pegawai",
+					"host": [
+						"{{test_api}}"
+					],
+					"path": [
+						"api",
+						"pegawai"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{test_api}}/api/gaji-pegawai",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{test_api}}/api/gaji-pegawai",
+					"host": [
+						"{{test_api}}"
+					],
+					"path": [
+						"api",
+						"gaji-pegawai"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{test_api}}/api/gaji-pegawai?nama_pegawai=Rizky",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "nama_pegawai",
+						"value": "Rizky sdsd",
+						"type": "text"
+					},
+					{
+						"key": "total_gaji",
+						"value": "2",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{test_api}}/api/gaji-pegawai?nama_pegawai=Rizky",
+					"host": [
+						"{{test_api}}"
+					],
+					"path": [
+						"api",
+						"gaji-pegawai"
+					],
+					"query": [
+						{
+							"key": "nama_pegawai",
+							"value": "Rizky"
+						},
+						{
+							"key": "total_gaji",
+							"value": "1212",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

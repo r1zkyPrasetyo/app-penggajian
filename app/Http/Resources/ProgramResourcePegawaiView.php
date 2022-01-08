@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProgramResourcePegawaiView extends JsonResource
@@ -18,7 +19,7 @@ class ProgramResourcePegawaiView extends JsonResource
             'id'            => $this->id,
             'nama_pegawai'  => strtoupper(substr($this->nama_pegawai, 0, 6)),
             'total_gaji'    => number_format($this->total_gaji,2,".",","),
-            'created_at'    => date_format($this->created_at,'Y-m-d'),
+            'created_at'            => Carbon::parse($this->created_at)->format('D/M/Y'),
         ];    
     }
 }

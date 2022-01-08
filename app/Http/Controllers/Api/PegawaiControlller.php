@@ -8,6 +8,7 @@ use App\Http\Resources\ProgramResourceGajiPegawai;
 use App\Http\Resources\ProgramResourceGajiPegawaiView;
 use App\Http\Resources\ProgramResourcePegawaiView;
 use App\Models\Pegawai;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -20,12 +21,21 @@ class PegawaiControlller extends Controller
      */
     public function index()
     {
-
-        $data = Pegawai::orderBy('created_at', 'desc')->paginate(2);
+        $columns = [
+            'nama_pegawai',
+            'total_gaji',
+            'created_at'
+        ];
+        $data = Pegawai::orderBy('created_at', 'desc')->select($columns)->paginate(2);
         foreach ($data as $index => $rows) {
             $data[$index]['nama_pegawai']             = strtoupper(substr($rows['nama_pegawai'], 0, 6));
             $data[$index]['total_gaji']               = number_format($rows['total_gaji'],2,".",",");
-            $data[$index]['created_at']               = date_format($rows['created_at'],'Y-m-d');
+            $data[$index]['created_at']               = Carbon::parse($rows['created_at'])->format('D/M/Y');
+            
+            foreach ($rows as $key => $value) {
+                if (array_key_exists($key, $columns) && ! is_null($value))
+                    $data[$index][$key] = $columns[$key][$value];
+            }
         }
         return response()->json($data);
     }

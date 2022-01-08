@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProgramResource extends JsonResource
@@ -18,8 +19,8 @@ class ProgramResource extends JsonResource
             'id'            => $this->id,
             'nama_pegawai'  => strtoupper($this->nama_pegawai),
             'total_gaji'    => $this->total_gaji,
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'created_at'            => Carbon::parse($this->created_at)->format('D/M/Y'),
+            'updated_at'            => Carbon::parse($this->updated_at)->format('D/M/Y'),
         ];    
     }
 }
