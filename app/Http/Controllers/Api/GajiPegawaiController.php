@@ -36,7 +36,7 @@ class GajiPegawaiController extends Controller
                 'id_pegawai' => $cekIdPegawai->id,
                 'tota_gaji_diterima' => $cekIdPegawai->total_gaji,
              ]);
-            return response()->json(['Pegawai created successfully.', new ProgramResourceGajiPegawai($dpegawai)]);
+            return response()->json(['Gaji Pegawai created successfully.', new ProgramResourceGajiPegawai($dpegawai)]);
         }else{
             return response()->json([
                 'status'    => 400,
