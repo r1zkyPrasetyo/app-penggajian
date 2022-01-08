@@ -7,6 +7,7 @@ use App\Http\Resources\ProgramResourceGajiPegawai;
 use App\Models\GajiPegawai;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class GajiPegawaiController extends Controller
 {
@@ -58,6 +59,6 @@ class GajiPegawaiController extends Controller
 
     public function batch(Request $request)
     {
-        # code...
+        Artisan::call("kledo:bikin-data-contoh-gaji-pegawai");
     }
 }
