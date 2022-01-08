@@ -14,7 +14,7 @@ class Pegawai extends Model
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
     
     protected $table = 'pegawai';
     protected $guarded = ['id', 'created_at', 'updated_at'];
