@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProgramResource;
-use App\Http\Resources\ProgramResourceGajiPegawai;
-use App\Http\Resources\ProgramResourceGajiPegawaiView;
 use App\Http\Resources\ProgramResourcePegawaiView;
 use App\Models\Pegawai;
 use Carbon\Carbon;
