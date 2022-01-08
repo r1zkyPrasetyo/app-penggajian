@@ -80,15 +80,9 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "nama_pegawai",
-						"value": "Rizky sdsd",
+						"key": "id_pegawai",
+						"value": "",
 						"type": "text"
-					},
-					{
-						"key": "total_gaji",
-						"value": "2",
-						"type": "text",
-						"disabled": true
 					}
 				],
 				"url": {
@@ -102,13 +96,9 @@
 					],
 					"query": [
 						{
-							"key": "nama_pegawai",
-							"value": "Rizky"
-						},
-						{
-							"key": "total_gaji",
-							"value": "1212",
-							"disabled": true
+							"key": "id_pegawai",
+							"value": "",
+							"type": "text"
 						}
 					]
 				}

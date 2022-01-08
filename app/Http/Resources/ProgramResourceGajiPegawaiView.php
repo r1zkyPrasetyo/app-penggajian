@@ -15,11 +15,11 @@ class ProgramResourceGajiPegawaiView extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'            => $this->id,
-            'id_pegawai'    => strtoupper($this->id_pegawai),
-            'total_gaji'    => number_format($this->tota_gaji_diterima,0,".","."),
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'id'                     => $this->id,
+            'id_pegawai'             => strtoupper($this->id_pegawai),
+            'total_gaji_diterima'    => number_format($this->tota_gaji_diterima,0,".","."),
+            'created_at'             => $this->created_at,
+            'updated_at'             => $this->updated_at,
         ];  
     }
 }

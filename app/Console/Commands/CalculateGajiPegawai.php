@@ -46,7 +46,7 @@ class CalculateGajiPegawai extends Command
         foreach ($dPegawai as $value) {
             $dpegawai = GajiPegawai::updateOrCreate([
                 'id_pegawai' => $value->id,
-                'tota_gaji_diterima' => $value->total_gaji,
+                'total_gaji_diterima' => $value->total_gaji,
             ]);
         }
 

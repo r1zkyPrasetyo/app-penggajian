@@ -28,6 +28,8 @@ class GajiPegawaiController extends Controller
         $data = GajiPegawai::with('pegawai')->select($columns)->latest()->paginate(2);
         foreach ($data as $index => $rows) {
             $data[$index]['total_gaji_diterima']       = number_format($rows['total_gaji_diterima'], 0, ".", ".");
+            // $data[$index]['created_at']               = Carbon::createFromIsoFormat('!YYYY-MMMM-D h:mm:ss a', '2019-January-3 6:33:24 pm', 'UTC')->isoFormat('M/D/YY HH:mm');
+            // $data[$index]['created_at']               = Carbon::parse($rows['created_at'])->format('D/M/Y');
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
@@ -56,7 +58,7 @@ class GajiPegawaiController extends Controller
         if (!empty($cekIdPegawai->id)) {
             $dpegawai = GajiPegawai::updateOrCreate([
                 'id_pegawai'         => $cekIdPegawai->id,
-                'tota_gaji_diterima' => $cekIdPegawai->total_gaji,
+                'total_gaji_diterima' => $cekIdPegawai->total_gaji,
             ]);
             return response()->json(['Gaji Pegawai created successfully.', new ProgramResourceGajiPegawai($dpegawai)]);
         } else {
