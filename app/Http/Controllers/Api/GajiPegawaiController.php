@@ -8,6 +8,7 @@ use App\Models\GajiPegawai;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Validator;
 
 class GajiPegawaiController extends Controller
 {
@@ -42,10 +43,18 @@ class GajiPegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $cekIdPegawai = Pegawai::where('nama_pegawai', $request->nama_pegawai)->first();
+        $validator = Validator::make($request->all(), [
+            'id_pegawai'   => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors());
+        }
+
+        $cekIdPegawai = Pegawai::find($request->id_pegawai);
         if (!empty($cekIdPegawai->id)) {
             $dpegawai = GajiPegawai::updateOrCreate([
-                'id_pegawai' => $cekIdPegawai->id,
+                'id_pegawai'         => $cekIdPegawai->id,
                 'tota_gaji_diterima' => $cekIdPegawai->total_gaji,
             ]);
             return response()->json(['Gaji Pegawai created successfully.', new ProgramResourceGajiPegawai($dpegawai)]);
