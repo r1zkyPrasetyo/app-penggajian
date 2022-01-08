@@ -25,10 +25,16 @@ class GajiPegawaiController extends Controller
             'id_pegawai',
             'total_gaji_diterima',
         ];
-        $data = GajiPegawai::with('pegawai')->select($columns)->paginate(1);
+        $data = GajiPegawai::select($columns)->paginate(1);
         foreach ($data as $index => $rows) {
             $data[$index]['total_gaji_diterima']      = number_format($rows['total_gaji_diterima'], 0, ".", ".");
             $data[$index]['waktu']                    = date('D/M/Y H:m', strtotime($rows['created_at']));
+
+            $ambildPegawai = Pegawai::where('id',$rows['id_pegawai'])->first();
+            $data[$index]['pegawai']                  = [
+                'nama_pegawai'                       => strtoupper($ambildPegawai->nama_pegawai),
+                'total_gaji'                         => number_format($ambildPegawai->total_gaji, 0, ".", ".")
+            ];
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
