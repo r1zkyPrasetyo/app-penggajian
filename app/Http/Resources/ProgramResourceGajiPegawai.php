@@ -18,7 +18,7 @@ class ProgramResourceGajiPegawai extends JsonResource
         return [
             'id'                    => $this->id,
             'id_pegawai'            => $this->id_pegawai,
-            'tota_gaji_diterima'    => number_format($this->tota_gaji_diterima, 2, ".", ","),
+            'tota_gaji_diterima'    => number_format($this->tota_gaji_diterima, 0, ".", "."),
             'created_at'            => Carbon::parse($this->created_at)->format('D/M/Y'),
             'updated_at'            => Carbon::parse($this->updated_at)->format('D/M/Y'),
         ];      

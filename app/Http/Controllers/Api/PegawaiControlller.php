@@ -29,7 +29,7 @@ class PegawaiControlller extends Controller
         $data = Pegawai::orderBy('created_at', 'desc')->select($columns)->paginate(2);
         foreach ($data as $index => $rows) {
             $data[$index]['nama_pegawai']             = strtoupper(substr($rows['nama_pegawai'], 0, 6));
-            $data[$index]['total_gaji']               = number_format($rows['total_gaji'], 2, ".", ",");
+            $data[$index]['total_gaji']               = number_format($rows['total_gaji'], 0, ".", ".");
             $data[$index]['created_at']               = Carbon::parse($rows['created_at'])->format('D/M/Y');
 
             foreach ($rows as $key => $value) {

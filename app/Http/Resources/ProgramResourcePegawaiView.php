@@ -18,7 +18,7 @@ class ProgramResourcePegawaiView extends JsonResource
         return [
             'id'            => $this->id,
             'nama_pegawai'  => strtoupper(substr($this->nama_pegawai, 0, 6)),
-            'total_gaji'    => number_format($this->total_gaji,2,".",","),
+            'total_gaji'    => number_format($this->total_gaji,0,".","."),
             'created_at'            => Carbon::parse($this->created_at)->format('D/M/Y'),
         ];    
     }

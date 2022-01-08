@@ -26,7 +26,7 @@ class GajiPegawaiController extends Controller
         ];
         $data = GajiPegawai::with('pegawai')->select($columns)->latest()->paginate(2);
         foreach ($data as $index => $rows) {
-            $data[$index]['tota_gaji_diterima']       = number_format($rows['tota_gaji_diterima'], 2, ".", ",");
+            $data[$index]['tota_gaji_diterima']       = number_format($rows['tota_gaji_diterima'], 0, ".", ".");
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
