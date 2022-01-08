@@ -84,12 +84,6 @@
 						"value": "Rizky sdsd",
 						"type": "text"
 					},
-					{
-						"key": "total_gaji",
-						"value": "2",
-						"type": "text",
-						"disabled": true
-					}
 				],
 				"url": {
 					"raw": "{{test_api}}/api/gaji-pegawai?nama_pegawai=Rizky",
@@ -105,11 +99,6 @@
 							"key": "nama_pegawai",
 							"value": "Rizky"
 						},
-						{
-							"key": "total_gaji",
-							"value": "1212",
-							"disabled": true
-						}
 					]
 				}
 			},
