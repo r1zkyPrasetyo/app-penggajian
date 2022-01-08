@@ -21,7 +21,7 @@ class GajiPegawaiControllerTest extends TestCase
     {
         $data = [
             'id_pegawai'         => 'Abu',
-            'tota_gaji_diterima' => '4000000',
+            'total_gaji_diterima' => '4000000',
         ];
         $this->post('/api/gaji-pegawai', $data)
             ->assertStatus(200)
