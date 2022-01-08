@@ -30,7 +30,6 @@ class PegawaiControlller extends Controller
         foreach ($data as $index => $rows) {
             $data[$index]['nama_pegawai']             = strtoupper(substr($rows['nama_pegawai'], 0, 6));
             $data[$index]['total_gaji']               = number_format($rows['total_gaji'], 0, ".", ".");
-            $data[$index]['created_at']               = Carbon::($rows['created_at'])->format('D/M/Y');
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
@@ -67,7 +66,6 @@ class PegawaiControlller extends Controller
                 'message'   => 'Total Gaji Maksimal 10000000 '
             ]);
         }
-        
         $dpegawai = Pegawai::updateOrCreate([
             'nama_pegawai' => $request->nama_pegawai,
             'total_gaji'   => $request->total_gaji,
