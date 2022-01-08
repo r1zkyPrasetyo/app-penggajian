@@ -17,7 +17,7 @@ class ProgramResourceGajiPegawaiView extends JsonResource
         return [
             'id'                     => $this->id,
             'id_pegawai'             => strtoupper($this->id_pegawai),
-            'total_gaji_diterima'    => number_format($this->tota_gaji_diterima,0,".","."),
+            'total_gaji_diterima'    => number_format($this->total_gaji_diterima,0,".","."),
             'created_at'             => $this->created_at,
             'updated_at'             => $this->updated_at,
         ];  
