@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProgramResourceGajiPegawai;
+use App\Http\Resources\ProgramResourcePegawaiView;
 use App\Models\GajiPegawai;
 use App\Models\Pegawai;
 use Carbon\Carbon;
@@ -23,20 +24,19 @@ class GajiPegawaiController extends Controller
         $columns = [
             'id_pegawai',
             'total_gaji_diterima',
-            'created_at'
         ];
-        $data = GajiPegawai::with('pegawai')->select($columns)->latest()->paginate(2);
+        $data = GajiPegawai::with('pegawai')->select($columns)->paginate(1);
         foreach ($data as $index => $rows) {
-            $data[$index]['total_gaji_diterima']       = number_format($rows['total_gaji_diterima'], 0, ".", ".");
-            // $data[$index]['created_at']               = Carbon::createFromIsoFormat('!YYYY-MMMM-D h:mm:ss a', '2019-January-3 6:33:24 pm', 'UTC')->isoFormat('M/D/YY HH:mm');
-            // $data[$index]['created_at']               = Carbon::parse($rows['created_at'])->format('D/M/Y');
+            $data[$index]['total_gaji_diterima']      = number_format($rows['total_gaji_diterima'], 0, ".", ".");
+            $data[$index]['waktu']                    = date('D/M/Y H:m', strtotime($rows['created_at']));
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
                     $data[$index][$key] = $columns[$key][$value];
             }
         }
-        return response()->json($data);
+
+        return new ProgramResourcePegawaiView($data);
     }
 
     /**

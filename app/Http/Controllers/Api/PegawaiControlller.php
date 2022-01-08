@@ -22,19 +22,21 @@ class PegawaiControlller extends Controller
         $columns = [
             'nama_pegawai',
             'total_gaji',
-            'created_at'
         ];
-        $data = Pegawai::orderBy('created_at', 'desc')->select($columns)->paginate(2);
+        $data = Pegawai::select($columns)->paginate(1);
         foreach ($data as $index => $rows) {
             $data[$index]['nama_pegawai']             = strtoupper(substr($rows['nama_pegawai'], 0, 6));
             $data[$index]['total_gaji']               = number_format($rows['total_gaji'], 0, ".", ".");
+            $data[$index]['waktu']                    = date('D/M/Y H:m', strtotime($rows['created_at']));
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
                     $data[$index][$key] = $columns[$key][$value];
             }
         }
-        return response()->json($data);
+
+        return new ProgramResourcePegawaiView($data);
+
     }
 
     /**
