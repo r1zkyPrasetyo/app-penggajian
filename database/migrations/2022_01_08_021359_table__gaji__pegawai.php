@@ -15,7 +15,7 @@ class TableGajiPegawai extends Migration
     {
         Schema::create('penggajian', function (Blueprint $table) {
             $table->id();
-            $table->integer('tota_gaji_diterima')->nullable();
+            $table->integer('total_gaji_diterima')->nullable();
             $table->integer('id_pegawai')->nullable();
             $table->timestamps();
         });

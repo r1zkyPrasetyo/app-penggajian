@@ -30,7 +30,7 @@ class PegawaiControlller extends Controller
         foreach ($data as $index => $rows) {
             $data[$index]['nama_pegawai']             = strtoupper(substr($rows['nama_pegawai'], 0, 6));
             $data[$index]['total_gaji']               = number_format($rows['total_gaji'], 0, ".", ".");
-            $data[$index]['created_at']               = Carbon::parse($rows['created_at'])->format('D/M/Y');
+            $data[$index]['created_at']               = Carbon::($rows['created_at'])->format('D/M/Y');
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))

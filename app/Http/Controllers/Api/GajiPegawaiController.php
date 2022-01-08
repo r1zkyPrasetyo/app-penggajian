@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProgramResourceGajiPegawai;
 use App\Models\GajiPegawai;
 use App\Models\Pegawai;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Validator;
@@ -21,12 +22,12 @@ class GajiPegawaiController extends Controller
     {
         $columns = [
             'id_pegawai',
-            'tota_gaji_diterima',
+            'total_gaji_diterima',
             'created_at'
         ];
         $data = GajiPegawai::with('pegawai')->select($columns)->latest()->paginate(2);
         foreach ($data as $index => $rows) {
-            $data[$index]['tota_gaji_diterima']       = number_format($rows['tota_gaji_diterima'], 0, ".", ".");
+            $data[$index]['total_gaji_diterima']       = number_format($rows['total_gaji_diterima'], 0, ".", ".");
 
             foreach ($rows as $key => $value) {
                 if (array_key_exists($key, $columns) && !is_null($value))
