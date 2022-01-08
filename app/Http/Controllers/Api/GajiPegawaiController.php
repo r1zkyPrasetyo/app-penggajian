@@ -55,4 +55,9 @@ class GajiPegawaiController extends Controller
             ]);
         }
     }
+
+    public function batch(Request $request)
+    {
+        # code...
+    }
 }
