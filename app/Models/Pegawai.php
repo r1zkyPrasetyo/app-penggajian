@@ -18,4 +18,10 @@ class Pegawai extends Model
     
     protected $table = 'pegawai';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+
+    public function gaji()
+    {
+        return $this->hasMany(GajiPegawai::class);
+    }
 }

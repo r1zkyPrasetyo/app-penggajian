@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProgramResourceGajiPegawai;
+use App\Http\Resources\ProgramResourceGajiPegawaiView;
+use App\Models\GajiPegawai;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Validator;
 
 class GajiPegawaiController extends Controller
 {
@@ -14,7 +19,8 @@ class GajiPegawaiController extends Controller
      */
     public function index()
     {
-        //
+        $data = GajiPegawai::with('pegawai')->latest()->paginate(2);
+        return response()->json($data);
     }
 
     /**
@@ -22,64 +28,25 @@ class GajiPegawaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $cekIdPegawai = Pegawai::where('nama_pegawai',$request->nama_pegawai)->first();
+        if (!empty($cekIdPegawai->id)) {
+            $dpegawai = GajiPegawai::updateOrCreate([
+                'id_pegawai' => $cekIdPegawai->id,
+                'tota_gaji_diterima' => $cekIdPegawai->total_gaji,
+             ]);
+            return response()->json(['Pegawai created successfully.', new ProgramResourceGajiPegawai($dpegawai)]);
+        }else{
+            return response()->json([
+                'status'    => 400,
+                'message'   => 'Pegawai Tidak Ada'
+            ]);       
+
+        }
+        
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

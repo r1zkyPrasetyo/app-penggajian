@@ -13,10 +13,10 @@ class TableGajiPegawai extends Migration
      */
     public function up()
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+        Schema::create('penggajian', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pegawai')->nullable();
-            $table->integer('total_gaji')->nullable();
+            $table->integer('tota_gaji_diterima')->nullable();
+            $table->integer('id_pegawai')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,7 @@ class TableGajiPegawai extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('penggajian');
+
     }
 }

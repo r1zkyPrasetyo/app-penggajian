@@ -18,4 +18,9 @@ class GajiPegawai extends Model
     
     protected $table = 'penggajian';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, 'id_pegawai');
+    }
 }
